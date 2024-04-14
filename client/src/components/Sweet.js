@@ -13,7 +13,7 @@ function Sweet({ sweet, onRemoveSweet }) {
 
   return (
     <li>
-      <span>{sweet.name}</span>
+      <span>{sweet.id}:{sweet.name}</span>
       <span>${(sweet.price / 100).toFixed(2)}</span>
       <button onClick={() => handleRemoveSweet(sweet)}>Delete</button>
     </li>
