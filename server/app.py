@@ -55,7 +55,7 @@ class SweetsByID(Resource):
     
 class VendorSweets(Resource):
     def post(self):
-        data = request.get_js()
+        data = request.get_json()
 
         price = data.get('price')
         vendor_id = data.get('vendor_id')
@@ -74,9 +74,9 @@ class VendorSweetsyID(Resource):
     def delete(self,id):
         vendors_sweet = VendorSweet.query.filter_by(id=id).first()
         if not vendors_sweet:
-            return {"error": "VendorSweet not found"},404
+            return {"error": "VendorSweet not found"},400
         db.session.delete(vendors_sweet)
-        db.commit()
+        db.session.commit()
         return {},204
 
 api.add_resource(Home, "/")
